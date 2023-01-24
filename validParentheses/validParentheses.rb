@@ -29,6 +29,7 @@ def is_valid(s)
 
     stack = []
     s.each do |char|
+        print()
         if hash.key?(char)
             stack.push(char)
         else
