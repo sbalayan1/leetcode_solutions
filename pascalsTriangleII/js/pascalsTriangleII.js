@@ -17,3 +17,5 @@ var getRow = function(rowIndex, memo={}) {
 };
 
 module.exports = getRow
+
+console.log(getRow(4))

@@ -1,7 +1,6 @@
 const getRow = require('../pascalsTriangleII')
 jest.setTimeout(1000)
 
-
 describe('pascalsTriangle.js', () => {
     describe('getRow()', () => {
         test('getRow(0) returns [1] for a rowIndex = 0', () => {
