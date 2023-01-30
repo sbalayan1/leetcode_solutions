@@ -46,3 +46,19 @@ Explanation:
 
     The second record does not meet any of the two criteria. Its tiv_2015 is not like any other policyholders and its location is the same as the third record, which makes the third record fail, too.
     So, the result is the sum of tiv_2016 of the first and last record, which is 45.
+
+-- solution --
+
+    -- to deterine whether a value in a column is unique or not, we can use GROUP BY and COUNT
+    
+    algorithm: check if record's TIV_2015 is unique. If TIV_2015 not unique and location pair is unique, then record should be counted towards sum
+
+    my attempt:
+        SELECT SUM(tiv_2016) as tiv_2016 FROM (SELECT DISTINCT lat, long FROM insurance) GROUP BY tiv_2015 LIMIT 1
+
+    official solution:
+        SELECT ROUND(SUM(tiv_2016), 2) as tiv_2016 
+        FROM insurance
+        WHERE tiv_2015 IN (SELECT tiv_2015 FROM insurance GROUP BY tiv_2015 HAVING COUNT(*) > 1) 
+        AND (LAT, LON) IN (SELECT lat, lon FROM insurance GROUP BY lat, lon HAVING COUNT(*) = 1)
+
