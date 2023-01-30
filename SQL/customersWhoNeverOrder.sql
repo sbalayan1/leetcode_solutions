@@ -70,3 +70,7 @@ SELECT name as Customers FROM customers WHERE customers.id NOT IN (SELECT custom
 
 -- the below creates a table of table 1 + matching records from table 2, then filters out all rows whose id are null. All of the orders.id are NOT NULL, therefore we filter out all of the matching records that are found in the order table. 
 SELECT name as Customers FROM customers LEFT JOIN orders ON customers.id = orders.customerId WHERE orders.id IS NULL
+
+
+-- official solution --
+SELECT name as Customers FROM customers WHERE customers.id NOT IN (SELECT customerId FROM orders)
