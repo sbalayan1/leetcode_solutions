@@ -57,3 +57,46 @@
  
 
 // Follow up: Could you write a solution that runs in O(m + n) time and use only O(1) memory?
+
+var getIntersectionNode = function(headA, headB) {
+    let lengthA = 0, lengthB = 0
+    let currentA = headA, currentB = headB
+
+    //find length of A and B
+    while (currentA) {
+        lengthA ++
+        currentA = currentA.next
+    }
+
+    while (currentB) {
+        lengthB += 1
+        currentB = currentB.next
+    }
+
+    //match lengths of linkedLists
+    let adjListA = headA, adjListB = headB
+    while(lengthA > lengthB) {
+        adjListA = adjListA.next
+        lengthA --
+    }
+
+    while (lengthB > lengthA) {
+        adjListB = adjListB.next
+        lengthB --
+    }
+    
+    while (adjListA && adjListB) {
+        //return intersection point if they do intersect
+        if (adjListA == adjListB) return adjListA
+        adjListA = adjListA.next
+        adjListB = adjListB.next
+    }
+};
+
+
+//listA.length = 5
+//listB.length = 6
+
+//start listA from head node
+//start listB from +1 node because it is 1 node greater in length
+//Then iterate through both lists until a.current = b.current
