@@ -11,6 +11,6 @@ const sortedArrayToBST = (nums) => {
 const constructBST = (arr, left, right) => {
     if (left > right) return null
     const mid = Math.floor((left+right)/2)
-    const head = new TreeNode(arr[mid], constructBST(arr, left, mid-1), constructBST(arr, mid+1, right))
+    const head = new TreeNode(arr[mid], constructBST(arr, left, mid-1), constructBSTgit(arr, mid+1, right))
     return head
 }
