@@ -16,13 +16,20 @@ function fibMemoization(n, memo={}) {
 //tabulation. Build a table whose size is equal to the input
 
 function fibTabulation(n) {
-    let table = new Array(n+1).fill(0)
+    const table = new Array(n+1).fill(0)
+    const length = table.length
     table[0] = 0
-    table[1] = 1
-    
-    for (let i = 2; i<table.length; i++) {
-      table[i] = table[i-1] + table[i-2] 
+    table[1] = 1    
+
+    for (let i = 0; i<length; i++) {
+      table[i+1] += table[i]
+      table[i+2] += table[i]
     }
     
     return table[n]
 }
+ 
+// time: O(n)
+// space: O(n)
+
+console.log(fibTabulation(46))
