@@ -17,7 +17,7 @@ function fibMemoization(n, memo={}) {
 
 function fibTabulation(n) {
     const table = new Array(n+1).fill(0)
-    const length = table.length
+    const length = table.length //if you're going to use the length of an array instance, you need to save it to a variable. i<table.length will break your for loop
     table[0] = 0
     table[1] = 1    
 
