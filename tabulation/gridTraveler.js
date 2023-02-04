@@ -1,6 +1,8 @@
 const gridTravelerTabulation = (m, n) => {
     //create a table that is roughly the size of the input
     //m and n represent the rows and columns. create a 2d array that corresponds
+
+    //we do m+1 and n+1 because in 0x0 grid, there are actually 0 ways to move through it. Thus the first row and column will always be populated with 0 because we can't move through a column or row with a 0 index. It also means that the given row or column is empty which is invalid
     const matrix = Array(m + 1).fill().map(() => Array(n+1).fill(0)) //need to use map here or else
     matrix[1][1] = 1
 
@@ -19,11 +21,6 @@ const gridTravelerTabulation = (m, n) => {
 }
 
 console.log(gridTravelerTabulation(2,2))
-
-// [
-//     [1,2],
-//     [3,4]
-// ]
 
 const recursiveGridTraveler = (m, n, memo={}) => {
     const pos = m + "," + n
